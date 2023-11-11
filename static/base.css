@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-top: 70px!important;
+}
+
+#user {
+    margin-left: 1em;
+    margin-top: 0.5em;
+    margin-right: 1em;
+}

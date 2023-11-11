@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-5">
+            <h3>{{ form_title }}</h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if not field.is_hidden %}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {% endif %}
+                    {{ field }}
+                    <p class="text-danger">{{ field.errors.as_text }}</p>
+                {% endfor %}
+                <span class="pull-left text-danger" id="tip">{{ login_form.non_field_errors }}</span>
+                <div class="clearfix"></div>
+                <div class="col-auto">
+                    {% block other_button %}{% endblock %}
+                    <button type="submit" class="btn btn-primary mb-3">{{ submit_text }}</button>
+                    <button class="btn btn-primary mb-3" onclick="window.location.href='{{ return_back_url }}'">返回</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    
+{% endblock %}
